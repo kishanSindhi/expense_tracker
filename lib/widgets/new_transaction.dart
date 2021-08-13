@@ -25,6 +25,7 @@ class _NewTransactionState extends State<NewTransaction> {
       enteredTitle,
       enteredAmount,
     );
+    Navigator.of(context).pop();
   }
 
   @override
@@ -51,7 +52,7 @@ class _NewTransactionState extends State<NewTransaction> {
               child: Text(
                 "Add Transaction",
                 style: TextStyle(
-                  color: Colors.purple,
+                  color: Theme.of(context).primaryColor,
                 ),
               ),
             )
