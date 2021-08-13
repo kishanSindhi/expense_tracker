@@ -4,20 +4,19 @@ import 'package:intl/intl.dart';
 
 class TransactionList extends StatelessWidget {
   final List<Transaction> transactions;
-
   const TransactionList(this.transactions);
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 300,
-      child: ListView(
-        children: transactions.map((tx) {
+      child: ListView.builder(
+        itemBuilder: (ctx, index) {
           return Card(
             child: Row(
               children: [
                 Container(
                   child: Text(
-                    "${tx.amount} \$",
+                    "${transactions[index].amount} \$",
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 20,
@@ -35,7 +34,7 @@ class TransactionList extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      tx.title,
+                      transactions[index].title,
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 17,
@@ -43,7 +42,7 @@ class TransactionList extends StatelessWidget {
                     ),
                     SizedBox(height: 7),
                     Text(
-                      DateFormat.MMMd().format(tx.date),
+                      DateFormat.MMMd().format(transactions[index].date),
                       style: TextStyle(
                         fontSize: 13,
                         color: Colors.grey,
@@ -54,7 +53,8 @@ class TransactionList extends StatelessWidget {
               ],
             ),
           );
-        }).toList(),
+        },
+        itemCount: transactions.length,
       ),
     );
   }
