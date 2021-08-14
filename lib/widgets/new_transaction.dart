@@ -47,6 +47,15 @@ class _NewTransactionState extends State<NewTransaction> {
               keyboardType: TextInputType.number,
               onSubmitted: (_) => submitData(),
             ),
+            Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: Row(
+                children: [
+                  Text("No date chosen!"),
+                  TextButton(onPressed: () {}, child: Text("Choose date!"))
+                ],
+              ),
+            ),
             TextButton(
               onPressed: submitData,
               child: Text(
